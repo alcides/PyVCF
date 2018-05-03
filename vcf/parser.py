@@ -266,8 +266,8 @@ class Reader(object):
         self.filename = filename
         if compressed:
             self._reader = gzip.GzipFile(fileobj=self._reader)
-            if sys.version > '3':
-                self._reader = codecs.getreader(encoding)(self._reader)
+        if sys.version > '3':
+            self._reader = codecs.getreader(encoding)(self._reader)
 
         if strict_whitespace:
             self._separator = '\t'
